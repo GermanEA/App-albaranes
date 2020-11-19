@@ -1,0 +1,7 @@
+{
+  "name": "demat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
