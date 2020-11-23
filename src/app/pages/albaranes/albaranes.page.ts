@@ -29,23 +29,19 @@ export class AlbaranesPage implements AfterViewInit {
   }
 
   startDrawing(ev) {
-    console.log('start: ', ev);
     this.drawing = true;
     const canvasPosition = this.canvasElement.getBoundingClientRect();
-    console.log(canvasPosition);
 
     this.saveX = ev.pageX - canvasPosition.x;
     this.saveY = ev.pageY - canvasPosition.y;
   }
 
   endDrawing() {
-    console.log('end: ');
     this.drawing = false;
   }
 
   moved(ev) {
     if (!this.drawing) return;
-    console.log('move: ', ev);
     const canvasPosition = this.canvasElement.getBoundingClientRect();
     let ctx = this.canvasElement.getContext('2d');
 
@@ -66,5 +62,20 @@ export class AlbaranesPage implements AfterViewInit {
     this.saveX = currentX;
     this.saveY = currentY;
   }
+
+  clearCanvas() {
+    const ctx = this.canvasElement.getContext('2d');
+    ctx.clearRect( 0, 0, this.canvasElement.width, this.canvasElement.height);
+  }
+
+  exportCanvasImage() {
+    const dataUrl = this.canvasElement.toDataURL();
+    console.log('image', dataUrl);
+    
+
+
+  }
+
+
 
 }
