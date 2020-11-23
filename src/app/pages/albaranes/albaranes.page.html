@@ -1,0 +1,13 @@
+<app-header titulo="albaranes"></app-header>
+
+<ion-content>
+    <!-- PARA EL DISPOSITIVO -->
+    <!-- <canvas #imageCanvas (touchstart) (touchend) (touchmove)></canvas> -->
+
+    <!-- PARA EL NAVEGADOR -->
+    <canvas #imageCanvas 
+        (mousedown)="startDrawing($event)" (touchstart)="startDrawing($event)" 
+        (mousemove)="moved($event)"        (touchmove)="moved($event)" 
+        (mouseup)="endDrawing()"           (touchend)="endDrawing()">
+    </canvas>
+</ion-content>
