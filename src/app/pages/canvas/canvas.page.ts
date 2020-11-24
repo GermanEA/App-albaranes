@@ -2,11 +2,11 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-albaranes',
-  templateUrl: './albaranes.page.html',
-  styleUrls: ['./albaranes.page.scss'],
+  selector: 'app-canvas',
+  templateUrl: './canvas.page.html',
+  styleUrls: ['./canvas.page.scss'],
 })
-export class AlbaranesPage implements AfterViewInit {
+export class CanvasPage implements AfterViewInit {
 
   @ViewChild('imageCanvas', { static: false }) canvas: any;
   canvasElement: any;
@@ -24,11 +24,9 @@ export class AlbaranesPage implements AfterViewInit {
     this.canvasElement = this.canvas.nativeElement;
     this.canvasElement.width = this.plt.width() + '';
     this.canvasElement.height = 200;
-    
   }
 
   startDrawing(ev) {
-    console.log('start');
     this.drawing = true;
     const canvasPosition = this.canvasElement.getBoundingClientRect();
 
@@ -100,5 +98,4 @@ export class AlbaranesPage implements AfterViewInit {
     const dataUrl = this.canvasElement.toDataURL();
     console.log('image', dataUrl);
   }
-
 }

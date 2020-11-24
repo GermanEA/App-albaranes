@@ -9,13 +9,18 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'albaranes',
-    loadChildren: () => import('./pages/albaranes/albaranes.module').then( m => m.AlbaranesPageModule)
-  },
-  {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
+  {
+    path: 'albaranes',
+    loadChildren: () => import('./pages/albaranes/albaranes.module').then( m => m.AlbaranesPageModule)
+  },  
+  {
+    path: 'canvas',
+    loadChildren: () => import('./pages/canvas/canvas.module').then( m => m.CanvasPageModule)
+  },
+
 ];
 
 @NgModule({
