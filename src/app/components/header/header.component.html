@@ -1,13 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"
-        text="Regresar"
-        color="primary">
-      </ion-back-button>
-    </ion-buttons>
-
-    <ion-title class="ion-text-capitalize">{{ titulo }}</ion-title>
+  <ion-toolbar color="danger" class="ion-text-center">
+      <ion-title class="ion-text-uppercase">{{titulo}}<small *ngIf="numAlbaran"> ({{numAlbaran}})</small></ion-title>
+      <ion-label class="lbl-user">{{userEmail}}</ion-label>
   </ion-toolbar>
 </ion-header>

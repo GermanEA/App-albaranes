@@ -1,15 +1,8 @@
-canvas {
-    border: 1px solid rgb(187, 178, 178)
+.tb-header {
+    color: #e1e1e1;
+    border-bottom: 1px solid #E1E1E1;
 }
 
-.color-block {
-    height: 40px;
-}
-
-.btn-group {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
+.ion-padding {
+    border-bottom: 1px solid #E1E1E1;
 }

@@ -1,16 +1,18 @@
-<app-header titulo="albaranes"></app-header>
+<app-header titulo="Albaranes"></app-header>
 
-<ion-content [forceOverscroll]="false">
-    <canvas #imageCanvas 
-        (mousedown)="startDrawing($event)" (touchstart)="startDrawingTouch($event)" 
-        (mousemove)="moved($event)"        (touchmove)="touchMoved($event)" 
-        (mouseup)="endDrawing()"           (touchend)="endDrawing()">
-    </canvas>
-
-    <ion-buttons class="btn-group">
-        <ion-button (click)="exportCanvasImage()" expand="block" fill="solid" color="success">Finalizar</ion-button>
-        <ion-button (click)="clearCanvas()" expand="block" fill="solid" color="secondary">Limpiar</ion-button>
-        <ion-button routerLink="/" expand="block" fill="solid" color="danger">Volver</ion-button>
-        <ion-button routerLink="/" expand="block" fill="solid" color="danger">Atrás</ion-button>
-    </ion-buttons>
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row class="tb-header">
+            <ion-col class="ion-text-center" size="4">Nº Albarán</ion-col>
+            <ion-col class="ion-text-center" size="4">Transportista</ion-col>
+            <ion-col class="ion-text-center" size="4">Fecha</ion-col>
+        </ion-row>
+        <ion-row class="ion-padding" *ngFor="let record of records" routerLink="/albaran">
+            <ion-col class="ion-text-center" size="4">{{ record.numero }}</ion-col>
+            <ion-col class="ion-text-center" size="4">{{ record.idtransp }}</ion-col>
+            <ion-col class="ion-text-center" size="4">{{ record.fecha }}</ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
+
+<app-footer></app-footer>
