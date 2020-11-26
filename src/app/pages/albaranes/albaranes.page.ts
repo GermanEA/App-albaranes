@@ -1,8 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ModalController } from '@ionic/angular';
-
-
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-albaranes',
@@ -11,24 +8,14 @@ import { ModalController } from '@ionic/angular';
 })
 export class AlbaranesPage implements OnInit {  
 
-  doc: any;
-  records: { id: string, idtransp: string, fecha: string, numero: string }[];
+  records;
 
-  constructor( private firestore: AngularFirestore ) {}
+  constructor( private dataService: DataService  ) {}
   
   ngOnInit() {
-    this.firestore.collection('/albaranes/').snapshotChanges().subscribe(res => {
-      if(res){
-        this.records = res.map (e => {
-          return {
-            id: e.payload.doc.id,
-            idtransp: e.payload.doc.data()['id transportista'],
-            fecha: e.payload.doc.data()['fecha'],
-            numero: e.payload.doc.data()['numero']
-          }
-        })
-      }
-    })
+    this.records = this.dataService.getData();
+
+    console.log(this.records);
   }
 
 }

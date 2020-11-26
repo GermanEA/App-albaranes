@@ -12,6 +12,7 @@ export class AlbaranPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
