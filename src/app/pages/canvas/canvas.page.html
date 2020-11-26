@@ -1,4 +1,4 @@
-<app-header titulo="Firma de albarán"></app-header>
+<app-header titulo="Firma" [numAlbaran]="numeroAlbaran['numero']"></app-header>
 
 <ion-content [forceOverscroll]="false" class="ion-text-center">
     <div class="ion-padding-vertical">
@@ -15,3 +15,5 @@
         <ion-button routerLink="/albaranes" expand="block" fill="solid" color="danger">Atrás</ion-button>
     </ion-buttons>
 </ion-content>
+
+<app-footer></app-footer>

@@ -1,12 +1,17 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
+//Para capturar el parámetro pasado por ruta
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-canvas',
   templateUrl: './canvas.page.html',
   styleUrls: ['./canvas.page.scss'],
 })
 export class CanvasPage implements AfterViewInit {
+
+  numeroAlbaran: {};
 
   @ViewChild('imageCanvas', { static: false }) canvas: any;
   canvasElement: any;
@@ -18,7 +23,14 @@ export class CanvasPage implements AfterViewInit {
   selecterColor: string = '#000000';
   lineWidth: number = 2;
 
-  constructor( private plt: Platform ) { }
+  constructor(private plt: Platform,
+              private route: ActivatedRoute ) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(data => {
+      this.numeroAlbaran = data;
+    });
+  }
 
   ngAfterViewInit() {
     this.canvasElement = this.canvas.nativeElement;
@@ -96,6 +108,7 @@ export class CanvasPage implements AfterViewInit {
 
   exportCanvasImage() {
     const dataUrl = this.canvasElement.toDataURL();
+    console.log(this.numeroAlbaran);
     console.log('image', dataUrl);
   }
 }

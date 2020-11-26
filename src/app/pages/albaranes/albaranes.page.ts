@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from '../../services/data.service';
+
+interface ListaAlbaranes {
+  id: string;
+  idtransp: number;
+  fecha: string;
+  numero: string;
+}
 
 @Component({
   selector: 'app-albaranes',
@@ -8,14 +15,27 @@ import { DataService } from '../../services/data.service';
 })
 export class AlbaranesPage implements OnInit {  
 
-  records;
+  listaAlbaranes: ListaAlbaranes[];
 
   constructor( private dataService: DataService  ) {}
   
   ngOnInit() {
-    this.records = this.dataService.getData();
-
-    console.log(this.records);
+    this.dataService.getData().subscribe(data => {
+        if(data){
+          
+          this.listaAlbaranes = data.map (e => {
+            return {
+              id: e.payload.doc.id,
+              idtransp: e.payload.doc.data()['id transportista'],
+              fecha: e.payload.doc.data()['fecha'],
+              numero: e.payload.doc.data()['numero']
+            }
+          })
+        }
+    })
   }
-
+  
 }
+  
+
+

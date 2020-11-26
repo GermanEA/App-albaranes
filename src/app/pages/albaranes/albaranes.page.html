@@ -7,10 +7,10 @@
             <ion-col class="ion-text-center" size="4">Transportista</ion-col>
             <ion-col class="ion-text-center" size="4">Fecha</ion-col>
         </ion-row>
-        <ion-row class="ion-padding" *ngFor="let record of records" routerLink="/albaran">
-            <ion-col class="ion-text-center" size="4">{{ record.numero }}</ion-col>
-            <ion-col class="ion-text-center" size="4">{{ record.idtransp }}</ion-col>
-            <ion-col class="ion-text-center" size="4">{{ record.fecha }}</ion-col>
+        <ion-row class="ion-padding" *ngFor="let albaran of listaAlbaranes" [routerLink]="['/albaran']" [queryParams]="{numero: albaran.numero}">
+            <ion-col class="ion-text-center" size="4">{{ albaran.numero }}</ion-col>
+            <ion-col class="ion-text-center" size="4">{{ albaran.idtransp }}</ion-col>
+            <ion-col class="ion-text-center" size="4">{{ albaran.fecha }}</ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
