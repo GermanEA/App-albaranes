@@ -3,14 +3,24 @@
 <ion-content class="ion-padding">
     <ion-grid>
         <ion-row class="tb-header">
-            <ion-col class="ion-text-center" size="4">Nº Albarán</ion-col>
-            <ion-col class="ion-text-center" size="4">Transportista</ion-col>
-            <ion-col class="ion-text-center" size="4">Fecha</ion-col>
+            <ion-col class="ion-text-center" size="3">Nº Albarán</ion-col>
+            <ion-col class="ion-text-center" size="3">Transportista</ion-col>
+            <ion-col class="ion-text-center" size="3">Fecha</ion-col>
+            <ion-col class="ion-text-center" size="3">Firmado</ion-col>
         </ion-row>
         <ion-row class="ion-padding" *ngFor="let albaran of listaAlbaranes" [routerLink]="['/albaran']" [queryParams]="{numero: albaran.numero}">
-            <ion-col class="ion-text-center" size="4">{{ albaran.numero }}</ion-col>
-            <ion-col class="ion-text-center" size="4">{{ albaran.idtransp }}</ion-col>
-            <ion-col class="ion-text-center" size="4">{{ albaran.fecha }}</ion-col>
+            <ion-col class="ion-text-center" size="3">{{ albaran.numero }}</ion-col>
+            <ion-col class="ion-text-center" size="3">{{ albaran.idtransp }}</ion-col>
+            <ion-col class="ion-text-center" size="3">{{ albaran.fecha }}</ion-col>
+            <ion-col class="ion-text-center" size="3">
+                <ng-container *ngIf="albaran.firma; else elseTemplate">
+                    <ion-icon name="thumbs-up-sharp" color="success"></ion-icon>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <ion-icon name="thumbs-down-sharp" color="danger"></ion-icon>
+                </ng-template>
+                
+            </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>

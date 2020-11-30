@@ -5,9 +5,11 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 
 interface Albaranes {
+  id: string;
   idtransp: number;
   fecha: string;
   numero: string;
+  firma: boolean;
 }
 
 @Component({
@@ -18,6 +20,7 @@ interface Albaranes {
 export class AlbaranPage implements OnInit {
 
   numeroAlbaran: {};
+  idAlbaran: {};
   albaranes: Albaranes[];
 
   constructor(private dataService: DataService,
@@ -33,13 +36,17 @@ export class AlbaranPage implements OnInit {
 
         this.albaranes = data.map (e => {
           return{
+            id: e.payload.doc.id,
             idtransp: e.payload.doc.data()['id transportista'],
             fecha: e.payload.doc.data()['fecha'],
-            numero: e.payload.doc.data()['numero']
+            numero: e.payload.doc.data()['numero'],
+            firma: e.payload.doc.data()['firma']
           }
         })
       }
     })
+
+    console.log(this.idAlbaran);
   }
 
 }

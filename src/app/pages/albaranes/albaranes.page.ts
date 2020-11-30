@@ -6,6 +6,7 @@ interface ListaAlbaranes {
   idtransp: number;
   fecha: string;
   numero: string;
+  firma: boolean;
 }
 
 @Component({
@@ -28,7 +29,8 @@ export class AlbaranesPage implements OnInit {
               id: e.payload.doc.id,
               idtransp: e.payload.doc.data()['id transportista'],
               fecha: e.payload.doc.data()['fecha'],
-              numero: e.payload.doc.data()['numero']
+              numero: e.payload.doc.data()['numero'],
+              firma: e.payload.doc.data()['firma']
             }
           })
         }

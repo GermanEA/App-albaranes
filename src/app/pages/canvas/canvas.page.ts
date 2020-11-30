@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController, NavController } from '@ionic/angular';
 
 //Para capturar el parámetro pasado por ruta
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-canvas',
@@ -11,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CanvasPage implements AfterViewInit {
 
-  numeroAlbaran: {};
+  inputAlbaran: {};
 
   @ViewChild('imageCanvas', { static: false }) canvas: any;
   canvasElement: any;
@@ -24,11 +26,15 @@ export class CanvasPage implements AfterViewInit {
   lineWidth: number = 2;
 
   constructor(private plt: Platform,
-              private route: ActivatedRoute ) { }
+              private route: ActivatedRoute,
+              private storage: AngularFireStorage,
+              private toastController: ToastController,
+              private navCtrl: NavController,
+              private dataService: DataService ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(data => {
-      this.numeroAlbaran = data;
+      this.inputAlbaran = data;
     });
   }
 
@@ -106,9 +112,37 @@ export class CanvasPage implements AfterViewInit {
     ctx.clearRect( 0, 0, this.canvasElement.width, this.canvasElement.height);
   }
 
-  exportCanvasImage() {
-    const dataUrl = this.canvasElement.toDataURL();
-    console.log(this.numeroAlbaran);
-    console.log('image', dataUrl);
+  async exportCanvasImage() {
+    
+    if(this.isCanvasBlank(this.canvasElement)){
+      this.presentToast('Es necesario una firma.', 'danger');
+    } else {
+      const dataUrl = this.canvasElement.toDataURL();
+      const base64Response = await fetch(dataUrl);
+      const blob = await base64Response.blob();
+    
+      var uploadTask = this.storage.storage.ref().child('images/' + this.inputAlbaran['numero'] + '.pdf').put(blob);
+      
+      this.dataService.setData(this.inputAlbaran['id']);
+      this.presentToast('Su firma se ha guardado.', 'success');
+      this.navCtrl.navigateForward('/albaranes');
+    }  
+  }
+
+  isCanvasBlank(canvas) {
+    return !canvas.getContext('2d')
+      .getImageData(0, 0, canvas.width, canvas.height).data
+      .some(channel => channel !== 0);
+  }
+
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      position: 'middle',
+      color: color,
+      cssClass: 'my-toast',
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

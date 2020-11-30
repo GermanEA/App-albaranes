@@ -15,5 +15,9 @@ export class DataService {
   getDataOne(num){
     return this.firestore.collection('albaranes', ref => ref.where('numero', '==', num)).snapshotChanges();
   }
+
+  setData(doc) {
+    this.firestore.doc('/albaranes/' + doc).update({firma: true});
+  }
     
 }
