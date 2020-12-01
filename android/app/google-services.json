@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "140375070944",
+    "firebase_url": "https://albaranes-demat.firebaseio.com",
+    "project_id": "albaranes-demat",
+    "storage_bucket": "albaranes-demat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140375070944:android:ff106236235f0c34089885",
+        "android_client_info": {
+          "package_name": "com.publyland.dematalbaranes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140375070944-6p4im579k5ce53s2f7fm813n67oh7e8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF6-tvKgVNegS2TAGIYUEz8a-nCYk7vko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140375070944-6p4im579k5ce53s2f7fm813n67oh7e8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
