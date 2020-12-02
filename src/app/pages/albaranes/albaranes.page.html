@@ -14,10 +14,10 @@
             <ion-col class="ion-text-center" size="3">{{ albaran.fecha }}</ion-col>
             <ion-col class="ion-text-center" size="3">
                 <ng-container *ngIf="albaran.firma; else elseTemplate">
-                    <ion-icon name="thumbs-up-sharp" color="success"></ion-icon>
+                    <ion-icon name="checkmark-done-outline" color="success"></ion-icon>
                 </ng-container>
                 <ng-template #elseTemplate>
-                    <ion-icon name="thumbs-down-sharp" color="danger"></ion-icon>
+                    <ion-icon name="checkmark-outline" color="danger"></ion-icon>
                 </ng-template>
                 
             </ion-col>

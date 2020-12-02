@@ -24,11 +24,6 @@ const routes: Routes = [
     path: 'albaran',
     loadChildren: () => import('./pages/albaran/albaran.module').then( m => m.AlbaranPageModule)
   },
-  {
-    path: 'inicio/:id',
-    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
-  },
-
 
 ];
 

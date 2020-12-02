@@ -33,6 +33,7 @@ export class FcmService {
         PushNotifications.register();
       } else {
         // Show some error
+        alert('Push error en el permiso');
       }
     });
 
@@ -68,7 +69,7 @@ export class FcmService {
         const data = notification.notification.data;
         console.log('Action performed: ' + JSON.stringify(notification.notification));
         if (data.detailsId) {
-          this.router.navigateByUrl(`/inicio/${data.detailsId}`);
+          this.router.navigateByUrl('/albaranes');
         }
       }
     );
