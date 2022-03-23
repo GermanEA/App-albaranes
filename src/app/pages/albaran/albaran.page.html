@@ -1,0 +1,38 @@
+<app-header titulo="Albarán" [numAlbaran]="numeroAlbaran['numero']"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row class="tb-header">
+            <ion-col class="ion-text-center" size="4">Nº Albarán</ion-col>
+            <ion-col class="ion-text-center" size="4">Transportista</ion-col>
+            <ion-col class="ion-text-center" size="4">Fecha</ion-col>
+        </ion-row>
+        <div class="row-container" *ngFor="let albaran of albaranes">
+            <ion-row class="ion-padding">
+                    <ion-col class="ion-text-center" size="4">{{ albaran.numero }}</ion-col>
+                    <ion-col class="ion-text-center" size="4">{{ albaran.idtransp }}</ion-col>
+                    <ion-col class="ion-text-center" size="4">{{ albaran.fecha }}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div class="btn-center">
+                        <ion-button color="success" type="button" [routerLink]="['/canvas']" [queryParams]="{numero: albaran.numero, id: albaran.id}" expand="block" fill="solid">
+                        Firmar
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <div class="btn-center">
+                        <ion-button color="primary" type="button" [routerLink]="['/albaranes']" expand="block" fill="solid">
+                        Volver
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>
+
+<app-footer></app-footer>

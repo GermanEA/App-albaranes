@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Demat</string>
+    <string name="title_activity_main">Demat</string>
+    <string name="package_name">com.publyland.dematalbaranes</string>
+    <string name="custom_url_scheme">com.publyland.dematalbaranes</string>
+</resources>
